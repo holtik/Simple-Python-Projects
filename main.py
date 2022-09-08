@@ -12,10 +12,10 @@ words = ['penultimate', 'diminutive', 'confluence', 'granular', 'parlance', 'pit
 
 score = 0
 
-timeleft = 30
+timeleft = 10
 
 def startGame(event):
-    if timeleft == 30:
+    if timeleft == 10:
         countdown()  # start countdown
 
     nextWord()  # run function to choose next word
@@ -48,7 +48,21 @@ def countdown():
         timeleft -= 1
         timeLabel.config(text="Time left: " + str(timeleft))
         timeLabel.after(1000, countdown)
+    else:
+        endgame()
 
+def endtimer():
+    global timeleft
+    timeleft = 0
+
+def endgame():
+    global timeleft
+    global score
+    timeleft = 10
+    label.config(text="")
+    timeLabel.config(text="Press enter to start again")
+    scoreLabel.config(text="Your score was: " + str(score))
+    score = 0
 
 # Create GUI
 root = tkinter.Tk()
@@ -57,6 +71,9 @@ root.title("Typing Test Game")
 root.geometry("375x200")
 
 # Add labels
+
+reset = tkinter.Button(root, text='End game', width=25, command=endtimer)
+reset.pack()
 
 instructions = tkinter.Label(root,text="Type in the words that appear, as fast as you can.", font=('Helvetica', 12))
 instructions.pack()
