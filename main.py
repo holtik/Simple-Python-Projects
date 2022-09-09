@@ -20,7 +20,7 @@ def startGame(event):
 
     nextWord()  # run function to choose next word
 
-# Choose and display next color
+# Choose and display next word
 def nextWord():
     global score
     global timeleft
