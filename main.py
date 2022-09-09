@@ -12,10 +12,10 @@ words = ['penultimate', 'diminutive', 'confluence', 'granular', 'parlance', 'pit
 
 score = 0
 
-timeleft = 10
+timeleft = 60
 
 def startGame(event):
-    if timeleft == 10:
+    if timeleft == 60:
         countdown()  # start countdown
 
     nextWord()  # run function to choose next word
@@ -39,6 +39,8 @@ def nextWord():
         label.config(text=str(words[0]))
 
         scoreLabel.config(text="Score: " + str(score))
+    else:
+        endgame()
 
 def countdown():
     global timeleft
@@ -58,7 +60,7 @@ def endtimer():
 def endgame():
     global timeleft
     global score
-    timeleft = 10
+    timeleft = 60
     label.config(text="")
     timeLabel.config(text="Press enter to start again")
     scoreLabel.config(text="Your score was: " + str(score))
