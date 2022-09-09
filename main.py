@@ -11,7 +11,7 @@ words = ['penultimate', 'diminutive', 'confluence', 'granular', 'parlance', 'pit
          'fastidious', 'maudlin', 'flabbergasted', 'teetotaler', 'empathy']
 
 score = 0
-
+high_score = 0
 timeleft = 60
 
 def startGame(event):
@@ -20,7 +20,7 @@ def startGame(event):
 
     nextWord()  # run function to choose next word
 
-# Choose and display next word
+# Choose and display next color
 def nextWord():
     global score
     global timeleft
@@ -60,21 +60,27 @@ def endtimer():
 def endgame():
     global timeleft
     global score
+    global high_score
+
     timeleft = 60
     label.config(text="")
     timeLabel.config(text="Press enter to start again")
     scoreLabel.config(text="Your score was: " + str(score))
+    if(score > high_score):
+        high_score = score
+    hsLabel.config(text="Highest score: " + str(high_score))
     score = 0
+
 
 # Create GUI
 root = tkinter.Tk()
 
 root.title("Typing Test Game")
-root.geometry("375x200")
+root.geometry("375x215")
 
 # Add labels
 
-reset = tkinter.Button(root, text='End game', width=25, command=endtimer)
+reset = tkinter.Button(root, text='End game', width=20, command=endtimer)
 reset.pack()
 
 instructions = tkinter.Label(root,text="Type in the words that appear, as fast as you can.", font=('Helvetica', 12))
@@ -82,6 +88,9 @@ instructions.pack()
 
 scoreLabel = tkinter.Label(root, text="Press enter to start", font=('Helvetica', 12))
 scoreLabel.pack()
+
+hsLabel = tkinter.Label(root, text="Highest score: 0", font=('Helvetica', 12))
+hsLabel.pack()
 
 timeLabel = tkinter.Label(root, text="Time left: "+ str(timeleft), font=('Helvetica', 12))
 timeLabel.pack()
