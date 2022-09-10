@@ -1,8 +1,6 @@
 import sys
 import tkinter
 from tkinter import *
-import tkinter.filedialog
-from tkinter import filedialog
 
 root = Tk("Text Editor")
 text = Text(root)
