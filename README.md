@@ -6,4 +6,4 @@ A simple typing test game made with Python and Tkinter where you have to type as
 
 
 # Simple Text Editor:
-A very basic text editor with options to change text font and color.
+A very basic text editor made with Tkinter with options to change text font and color.
